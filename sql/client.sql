@@ -1,0 +1,6 @@
+-- show databases;
+-- create database gameStore;
+-- use gameStore;
+-- create table client (id int unsigned not null auto_increment, name varchar(20) not null, balance int not null, createdAdd date not null, primary key(id));
+-- insert into client (name, balance, createdAdd) value ('Alex',100, '2026-05-24' ), ('Marta', 120, '2026-01-21'), ('Tom', 80, '2025-12-04');
+-- insert into client (name, balance, createdAdd) value ('Anna', 60, '2025-03-20'), ('Jerry', 110, '2025-06-13'), ('Devid', 200, '2024-03-30');

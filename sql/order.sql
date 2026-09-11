@@ -1,0 +1,3 @@
+/*create table `order` (id int unsigned not null auto_increment, client_id int unsigned not null, product_id int unsigned not null, createdAdd date not null, primary key(id), constraint fk_client_id foreign key(client_id)references client(id), constraint fk_product_id foreign key(product_id) references product(id));
+insert into `order` (client_id, product_id, createdAdd) values (1,2,'2026-03-12'), (2,1,'2025-12-02'), (3,2, '2025-05-24'), (4,3,'2026-06-20'), (4,2,'2026-08-09');
+*/
