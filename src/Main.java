@@ -5,9 +5,9 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) throws SQLException, IOException {
         Database database = new Database("root", "331331mama", "jdbc:mysql://localhost:3306/gameStore");
-        database.findAllClient();
-        database.findAllProduct();
-        database.findAllOrder();
+//        database.findAllClient();
+//        database.findAllProduct();
+//        database.findAllOrder();
 
         /*Сделай два репозитории для юзеров и для клиентов виде интерфейса
         затем создать или за этих двух интерфейсов которые будут
@@ -17,7 +17,7 @@ public class Main {
         name возвращать этот name при этом переворачиваю его задом наперёд*/
 
         /*Создать метод который будет возвращайте тебе данных где будет название
-         группы продутлов и общий баланс эти группах*/
+         группы client и общий баланс эти группах*/
 
         /*Создать метод который будет возвращать общее количество всех
         пользователей логин и пароль которых содержит чётные количество цифр*/
@@ -29,7 +29,9 @@ public class Main {
 
         ClientRepository clientRepository =  new ClientRepositoryImpl(database);
 //        clientRepository.longName();
-       List<GanreSumDto> ganreSumDtoList =  database.productSumByGroupGanre();
-        System.out.println("!!! +  " + ganreSumDtoList);
+//       List<GanreSumDto> ganreSumDtoList =  database.productSumByGroupGanre();
+//        System.out.println("!!! +  " + ganreSumDtoList);
+        List<ClientSumByType> x = database.sumClientByType();
+        System.out.println(x);
     }
 }

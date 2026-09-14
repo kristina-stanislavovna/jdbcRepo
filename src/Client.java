@@ -5,12 +5,14 @@ public class Client {
     private String name;
     private int balance;
     private LocalDate createdAdd;
+    private Type_Client typeClient;
 
-    public Client(int id, String name, int balance, LocalDate createdAdd) {
+    public Client(int id, String name, int balance, LocalDate createdAdd, Type_Client typeClient) {
         this.id = id;
         this.name = name;
         this.balance = balance;
         this.createdAdd = createdAdd;
+        this.typeClient = typeClient;
     }
 
     public int getId() {
@@ -33,6 +35,10 @@ public class Client {
         this.name = name;
     }
 
+    public Type_Client getTypeClient() {
+        return typeClient;
+    }
+
     @Override
     public String toString() {
         return "Client{" +
@@ -40,6 +46,7 @@ public class Client {
                 ", name='" + name + '\'' +
                 ", balance=" + balance +
                 ", createdAdd=" + createdAdd +
+                ", typeClient=" + typeClient +
                 '}' + '\n';
     }
 }

@@ -38,22 +38,22 @@ public class Database {
                 '}';
     }
 
-    public List<Client> findAllClient() throws SQLException {
-        String sql = "SELECT * FROM CLIENT";
-        Connection connection = DriverManager.getConnection(url, login, password);
-        Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery(sql);
-        List<Client> clients = new ArrayList<>();
-        while (resultSet.next()) {
-            int id = resultSet.getInt("id");
-            String name = resultSet.getString("name");
-            int balance = resultSet.getInt("balance");
-            LocalDate createdAdd = resultSet.getDate("createdAdd").toLocalDate();
-            Client client = new Client(id, name, balance, createdAdd);
-            clients.add(client);
-        }
-        return clients;
-    }
+//    public List<Client> findAllClient() throws SQLException {
+//        String sql = "SELECT * FROM CLIENT";
+//        Connection connection = DriverManager.getConnection(url, login, password);
+//        Statement statement = connection.createStatement();
+//        ResultSet resultSet = statement.executeQuery(sql);
+//        List<Client> clients = new ArrayList<>();
+//        while (resultSet.next()) {
+//            int id = resultSet.getInt("id");
+//            String name = resultSet.getString("name");
+//            int balance = resultSet.getInt("balance");
+//            LocalDate createdAdd = resultSet.getDate("createdAdd").toLocalDate();
+//            Client client = new Client(id, name, balance, createdAdd, Type_Client);
+//            clients.add(client);
+//        }
+//        return clients;
+//    }
 
     public void findAllProduct() throws SQLException {
         String sql = "SELECT * FROM PRODUCT";
@@ -107,6 +107,24 @@ public class Database {
             fileWriter.close();
         }
         return ganreSumDtosList;
-
     }
+
+    /*Создать метод который будет возвращайте тебе данных где будет название
+         группы client и общий баланс эти группах*/
+    public List<ClientSumByType> sumClientByType() throws SQLException {
+        String sql = "SELECT type_client, SUM(balance) AS sum FROM CLIENT GROUP BY type_client;";
+        Connection connection = DriverManager.getConnection(url, login, password);
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(sql);
+        List<ClientSumByType> clientSumByTypes = new ArrayList<>();
+        while (resultSet.next()) {
+            int sum = resultSet.getInt("sum");
+            Type_Client typeClient = Type_Client.valueOf(resultSet.getString("type_client"));
+            ClientSumByType clientSumByType = new ClientSumByType(sum, typeClient);
+            clientSumByTypes.add(clientSumByType);
+        }
+        return clientSumByTypes;
+    }
+
+
 }
