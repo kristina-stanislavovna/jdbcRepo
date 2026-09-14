@@ -1,0 +1,4 @@
+-- create table product (id int unsigned not null auto_increment, name varchar(20) not null, price int not null, ganre enum ('HORROR', 'ADVENTURE', 'ACTION'), primary key(id));
+-- desc product;
+-- insert into product (name, price, ganre) values ('Phasmophobia', 15, 'HORROR'), ('Stray',30, 'ADVENTURE'), ('Cyberpunk 2077', 40, 'ACTION'), ('The Last of Us', 60, 'ADVENTURE' ), ('Outlast', 30, 'HORROR');
+-- select * from product;
