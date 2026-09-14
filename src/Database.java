@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -35,7 +38,7 @@ public class Database {
                 '}';
     }
 
-    public void findAllClient() throws SQLException {
+    public List<Client> findAllClient() throws SQLException {
         String sql = "SELECT * FROM CLIENT";
         Connection connection = DriverManager.getConnection(url, login, password);
         Statement statement = connection.createStatement();
@@ -49,7 +52,7 @@ public class Database {
             Client client = new Client(id, name, balance, createdAdd);
             clients.add(client);
         }
-        System.out.println("Clients: " + clients);
+        return clients;
     }
 
     public void findAllProduct() throws SQLException {
@@ -84,6 +87,26 @@ public class Database {
             orders.add(order);
         }
         System.out.println("Orders: " + orders);
+    }
+
+    public List<GanreSumDto> productSumByGroupGanre() throws SQLException, IOException {
+        String sql = "SELECT ganre, sum(PRICE) as sumPrice FROM PRODUCT GROUP BY GANRE;";
+        Connection connection = DriverManager.getConnection(url, login, password);
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(sql);
+        FileWriter fileWriter = null;
+        List<GanreSumDto> ganreSumDtosList = new ArrayList<>();
+        while (resultSet.next()) {
+            Ganre ganre = Ganre.valueOf(String.valueOf(resultSet.getString("ganre")));
+            int sumPrice = resultSet.getInt("sumPrice");
+            ganreSumDtosList.add(new GanreSumDto(ganre, sumPrice));
+            fileWriter = new FileWriter(new File(ganre.name()));
+            fileWriter.write("Ganre: " + ganre + '\n');
+            fileWriter.write("Sum price: " + sumPrice + '\n');
+            fileWriter.flush();
+            fileWriter.close();
+        }
+        return ganreSumDtosList;
 
     }
 }
