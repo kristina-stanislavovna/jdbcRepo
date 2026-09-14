@@ -11,6 +11,11 @@ public class Product {
         this.ganre = ganre;
     }
 
+//    public Product( Ganre ganre, int price) {
+//        this.ganre = ganre;
+//        this.price = price;
+//
+//    }
     public int getId() {
         return id;
     }
