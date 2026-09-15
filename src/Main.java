@@ -34,7 +34,9 @@ public class Main {
 //        List<ClientSumByType> x = database.sumClientByType();
 //        System.out.println(x);
         ClientRepositoryImpl clientRepository1 = new ClientRepositoryImpl(database);
-       List<CountLoginPasswordEven> x =  clientRepository1.countEvenClient();
-        System.out.println("LIST EVEN CLIENT: " + x);
+//       List<CountLoginPasswordEven> x =  clientRepository1.countEvenClient();
+//        System.out.println("LIST EVEN CLIENT: " + x);
+        Client max = clientRepository1.maxClient();
+        System.out.println("Max client: " + max);
     }
 }

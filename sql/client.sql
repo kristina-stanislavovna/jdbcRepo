@@ -17,3 +17,7 @@ update client set password = 'anna' where id = 4;
 update client set password = 'j12' where id = 5;
 update client set password = 'devid' where id = 6;
 update client set password = 'kris' where id = 7;
+
+INSERT INTO client (name, balance, createdAdd, type_client, password) values ('Vladimirx', 1000,'2025-12-04', 'Active', 'vova111');
+INSERT INTO client (name, balance, createdAdd, type_client, password) values ('ax', 2000, '2026-03-02', 'PENDING', 'xxx');
+

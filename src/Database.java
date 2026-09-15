@@ -38,22 +38,24 @@ public class Database {
                 '}';
     }
 
-//    public List<Client> findAllClient() throws SQLException {
-//        String sql = "SELECT * FROM CLIENT";
-//        Connection connection = DriverManager.getConnection(url, login, password);
-//        Statement statement = connection.createStatement();
-//        ResultSet resultSet = statement.executeQuery(sql);
-//        List<Client> clients = new ArrayList<>();
-//        while (resultSet.next()) {
-//            int id = resultSet.getInt("id");
-//            String name = resultSet.getString("name");
-//            int balance = resultSet.getInt("balance");
-//            LocalDate createdAdd = resultSet.getDate("createdAdd").toLocalDate();
-//            Client client = new Client(id, name, balance, createdAdd, Type_Client);
-//            clients.add(client);
-//        }
-//        return clients;
-//    }
+    public List<Client> findAllClient() throws SQLException {
+        String sql = "SELECT * FROM CLIENT";
+        Connection connection = DriverManager.getConnection(url, login, password);
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(sql);
+        List<Client> clients = new ArrayList<>();
+        while (resultSet.next()) {
+            int id = resultSet.getInt("id");
+            String name = resultSet.getString("name");
+            int balance = resultSet.getInt("balance");
+            LocalDate createdAdd = resultSet.getDate("createdAdd").toLocalDate();
+            Type_Client typeClient = Type_Client.valueOf(resultSet.getString("type_client"));
+            String password = resultSet.getString("password");
+            Client client = new Client(id, name, balance, createdAdd, typeClient, password);
+            clients.add(client);
+        }
+        return clients;
+    }
 
     public void findAllProduct() throws SQLException {
         String sql = "SELECT * FROM PRODUCT";
@@ -141,8 +143,8 @@ public class Database {
             x.add(countLoginPasswordEven);
         }
         return x;
-
     }
+
 
 
 }

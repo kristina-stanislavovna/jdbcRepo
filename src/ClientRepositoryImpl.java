@@ -45,5 +45,17 @@ public class ClientRepositoryImpl implements ClientRepository {
         return y;
     }
 
+    public Client maxClient() throws SQLException {
+        List<Client> clients = database.findAllClient();
+        Client max = null;
+        int maxBalance = clients.get(0).getBalance();
+        for (Client client : clients) {
+            if (maxBalance < client.getBalance() & client.getName().endsWith("x")) {
+                max = client;
+            }
+        }
+        return max;
+    }
+
 
 }
