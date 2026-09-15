@@ -125,6 +125,24 @@ public class Database {
         }
         return clientSumByTypes;
     }
+    /*Создать метод который будет возвращать общее количество всех
+        пользователей, логин, и пароль -  которых содержит чётные количество симовлов*/
+
+    public List<CountLoginPasswordEven> countClientsByEven () throws SQLException {
+        String sql = "SELECT * FROM CLIENT";
+        Connection connection = DriverManager.getConnection(url, login, password);
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(sql);
+        List<CountLoginPasswordEven> x = new ArrayList<>();
+        while (resultSet.next()) {
+            String name = resultSet.getString("name");
+            String password = resultSet.getString("password");
+            CountLoginPasswordEven countLoginPasswordEven = new CountLoginPasswordEven(name, password);
+            x.add(countLoginPasswordEven);
+        }
+        return x;
+
+    }
 
 
 }
