@@ -7,3 +7,13 @@ insert into client (name, balance, createdAdd) value ('Anna', 60, '2025-03-20'),
 
 -- Add additional enum column
 alter table client add column type_client enum('ACTIVE', 'BLOCKED', 'PENDING') NOT NULL;
+alter table client add column password varchar(20) not null;
+alter table client add column password varchar(20) not null;
+select * from client;
+update client set password = 'alex1' where id = 1;
+update client set password = 'marta1111' where id = 2;
+update client set password = 'tom22' where id = 3;
+update client set password = 'anna' where id = 4;
+update client set password = 'j12' where id = 5;
+update client set password = 'devid' where id = 6;
+update client set password = 'kris' where id = 7;
