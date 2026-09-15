@@ -1,4 +1,5 @@
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ClientRepositoryImpl implements ClientRepository {
@@ -26,6 +27,23 @@ public class ClientRepositoryImpl implements ClientRepository {
 //        System.out.println("Reversed Long name: " + reverse);
 //
 //    }
+
+    public List<CountLoginPasswordEven> countEvenClient() throws SQLException {
+        List<CountLoginPasswordEven> x = database.countClientsByEven();
+        int count = 0;
+        CountLoginPasswordEven xx = null;
+        List<CountLoginPasswordEven> y = new ArrayList<>();
+        for (CountLoginPasswordEven countLoginPasswordEven : x) {
+            if (countLoginPasswordEven.name().length() % 2 == 0 & countLoginPasswordEven.password().length() % 2 == 0) {
+                count++;
+                xx = new CountLoginPasswordEven(countLoginPasswordEven.name(), countLoginPasswordEven.password());
+                y.add(xx);
+            }
+        }
+        System.out.println("Count: " + count);
+
+        return y;
+    }
 
 
 }

@@ -31,7 +31,10 @@ public class Main {
 //        clientRepository.longName();
 //       List<GanreSumDto> ganreSumDtoList =  database.productSumByGroupGanre();
 //        System.out.println("!!! +  " + ganreSumDtoList);
-        List<ClientSumByType> x = database.sumClientByType();
-        System.out.println(x);
+//        List<ClientSumByType> x = database.sumClientByType();
+//        System.out.println(x);
+        ClientRepositoryImpl clientRepository1 = new ClientRepositoryImpl(database);
+       List<CountLoginPasswordEven> x =  clientRepository1.countEvenClient();
+        System.out.println("LIST EVEN CLIENT: " + x);
     }
 }
