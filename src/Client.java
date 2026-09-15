@@ -6,13 +6,15 @@ public class Client {
     private int balance;
     private LocalDate createdAdd;
     private Type_Client typeClient;
+    private String password;
 
-    public Client(int id, String name, int balance, LocalDate createdAdd, Type_Client typeClient) {
+    public Client(int id, String name, int balance, LocalDate createdAdd, Type_Client typeClient, String password) {
         this.id = id;
         this.name = name;
         this.balance = balance;
         this.createdAdd = createdAdd;
         this.typeClient = typeClient;
+        this.password = password;
     }
 
     public int getId() {
@@ -39,6 +41,10 @@ public class Client {
         return typeClient;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     @Override
     public String toString() {
         return "Client{" +
@@ -47,6 +53,7 @@ public class Client {
                 ", balance=" + balance +
                 ", createdAdd=" + createdAdd +
                 ", typeClient=" + typeClient +
+                ", password='" + password + '\'' +
                 '}' + '\n';
     }
 }
